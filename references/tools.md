@@ -1,7 +1,7 @@
 ---
 title: "Tools / 工具清单"
 created: 2026-11-05
-updated: 2026-11-05
+updated: 2026-11-06
 tags: [references, tools]
 status: active
 lang: both
@@ -16,6 +16,10 @@ lang: both
 | Git | Version control | — |
 | GitHub | Code hosting & collaboration | — |
 | Antigravity | AI coding assistant | Used to build this repo |
+
+## Creative media / 视频与网页动效
+
+See [Creative Media Toolchain](../domains/tech/creative-media-toolchain.md) for the catalog of 20 video, web animation, 3D, audio, and export tools, the Remotion Agent Skills installed locally in Codex, and task-based selection guidance.
 
 ## Productivity / 生产力
 
