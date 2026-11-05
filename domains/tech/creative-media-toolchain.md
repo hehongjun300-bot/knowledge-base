@@ -9,73 +9,65 @@ lang: both
 
 # 视频与网页动效工具链
 
-这份清单记录可供 Agent 在网页、视频、3D、音频和导出任务中选择的工具。先检查项目现有技术栈和本机依赖，再按任务需要使用；不要把所有库塞进每个项目。
+这份清单记录可供 Agent 在网页、视频、3D、音频和导出任务中选择的工具。开始任务时先检查项目现有技术栈，再按需使用。
 
-## Agent Skills 已安装
+## 本机部署状态
 
-本机 Codex 已安装 Remotion 官方 Skills（来源：[remotion-dev/skills](https://github.com/remotion-dev/skills)），下一轮 Codex 对话中可用：
+设备为 Apple Silicon Mac，8 GB 统一内存。工具和 Skill 已按用户授权安装到用户目录；大型生成模型不在本次安装范围内。
 
-- remotion-best-practices
-- remotion-captions
-- remotion-create
-- remotion-docs
-- remotion-interactivity
-- remotion-license
-- remotion-maps
-- remotion-markup
-- remotion-multimedia
-- remotion-render
-- remotion-saas
-- remotion-studio
-- remotion-upgrade
+- **Remotion Agent Skills**：13 个官方 Skill 已安装在 Codex，包括 remotion-best-practices、remotion-create、remotion-render、remotion-captions 等。它们是工作指引，不等于软件或模型。
+- **JavaScript 工具链**：共享目录 ~/.codex/creative-media-toolchain 已安装 Remotion 4.0.541、Anime.js 4.5.0、Motion 14.9.1、Lottie Web 5.13.0、Three.js 0.187.0、Three GPU Pathtracer 0.0.28、Jolt Physics JS 1.1.1、postprocessing 6.39.6、Three.quarks 0.17.1、Tweakpane 4.0.5、FFmpeg static 5.3.0 和 Remotion headless Chromium。实际项目仍应把所需库写入自己的依赖清单。
+- **Manim / librosa / FFmpeg**：Manim Community 0.22.1、librosa 0.11.0、FFmpeg/ffprobe 已安装在共享 Python 环境，命令可从 ~/.local/bin 调用。
+- **WhisperX**：3.8.6 已安装，命令可调用。模型按首次任务需要下载；本机建议 CPU、int8 和较小模型。
+- **CosyVoice**：源码及 Python 3.10 推理环境已安装，MPS 可用且核心模块导入成功。语音模型未下载；推荐 0.5B 模型仓库约 9.7 GB，超过本机内存预算。
+- **Blender + MCP**：Blender 5.2.3 LTS 已安装；MCP 插件 1.8 已启用，Codex 配置在 ~/.codex/config.toml。本地服务监听 127.0.0.1:9876，工具握手成功。若当前 Codex 会话里尚未出现 Blender 工具，重启 Codex 后加载配置。
+- **OBS Studio**：33.0.1 已安装。首次录屏时 macOS 可能要求授予屏幕录制权限。
+- **LosslessCut**：3.70.2 已安装。
+- **ComfyUI**：Comfy Desktop 1.1.8 已安装；本地 Apple Silicon/MPS ComfyUI 0.44.0 服务运行于 http://127.0.0.1:8188。尚未安装生成模型。视频工作流的入门模型约 41–53 GB，不适合本机空间和内存预算。
 
-Skill 是 Agent 的工作指引，不等于软件或运行时已安装。Remotion 渲染仍需要具体项目的依赖和浏览器环境；商用场景需先核对 Remotion 许可。
+本机 Codex Skill creative-media-toolchain 提供按任务选工具的路由说明，版本与路径见 ~/.codex/skills/creative-media-toolchain/references/local-setup.md。
 
 ## 按任务选择
 
 ### 网页、界面动画与 3D
 
-- **Motion**：React 界面动画和布局过渡。按项目添加依赖。
-- **Anime.js**：时间线编排和 DOM/SVG 动画。按项目添加依赖。
-- **Three.js**：浏览器 3D 场景和镜头运动。按项目添加依赖。
+- **Motion**：React 界面动画和布局过渡。
+- **Anime.js**：时间线编排和 DOM/SVG 动画。
+- **Three.js**：浏览器 3D 场景和镜头运动。
 - **postprocessing**：Three.js 后期效果；与 Three.js 项目配套。
-- **Three.quarks**：Three.js 粒子系统；按需加入。
+- **Three.quarks**：Three.js 粒子系统。
 - **Tweakpane**：开发时实时调试场景参数。
-- **Three GPU Pathtracer**：需要高质量离线式渲染时评估，先验证浏览器与设备性能。
-- **Lottie**：播放已有矢量动画；若要制作动画，需另选创作工具。
+- **Three GPU Pathtracer**：高质量路径追踪；先验证设备性能。
+- **Lottie**：播放已有矢量动画；创作需配套工具。
 
 ### 程序化视频、图解和导出
 
-- **Remotion**：React 编写并渲染视频；优先用于可复用、数据驱动或可编程的视频。
+- **Remotion**：React 编写并渲染数据驱动视频。
 - **Manim**：数学、公式和图表讲解动画。
-- **FFmpeg**：音视频转码、滤镜、合成与导出；作为命令行工具使用。
-- **LosslessCut**：快速无损剪切；桌面应用。
-- **OBS Studio**：录屏和直播采集；桌面应用。
+- **FFmpeg**：音视频转码、滤镜、合成与导出。
+- **LosslessCut**：快速无损剪切。
+- **OBS Studio**：录屏和直播采集。
 
 ### 3D、物理与生成素材
 
-- **Blender + MCP for Blender**：Agent 操作 Blender 场景。需分别安装 Blender 插件和 MCP 服务端，并在 Codex 中配置连接。
-- **Jolt Physics**：游戏或实时 3D 项目中的物理模拟；按项目集成。
-- **ComfyUI**：本地节点式生成工作流；需单独部署服务与模型，评估磁盘、内存和 GPU 后再安装。
+- **Blender + MCP for Blender**：Agent 操作 Blender 场景；插件和 MCP 服务端均已安装配置。
+- **Jolt Physics**：实时 3D 项目的物理模拟；按项目集成。
+- **ComfyUI**：本地节点式生成工作流；应用和服务已安装，模型按任务添加。
 
 ### 音频与字幕
 
-- **CosyVoice**：语音生成；模型和推理环境单独部署。
-- **librosa**：音频分析和节拍提取；Python 项目依赖。
-- **WhisperX**：语音识别及词级时间对齐；Python/模型依赖，按需部署。
-
-## 当前安装边界
-
-已确认本机有 Node.js/npm；本机 Codex 的 Remotion Skills 已安装。Remotion、Motion、Anime.js、Three.js、Lottie、Jolt、postprocessing、Three.quarks、Tweakpane 等是项目级依赖，应在具体项目中安装，避免全局安装或污染其他项目。FFmpeg、Blender、OBS、LosslessCut、ComfyUI、CosyVoice、WhisperX、Manim 等需要单独安装或配置；安装前应检查当前机器、包管理器、磁盘和模型/GPU需求。当前未确认这些软件/模型可运行。
+- **CosyVoice**：语音生成；运行环境已安装，推理模型未下载。
+- **librosa**：音频分析和节拍提取。
+- **WhisperX**：语音识别及词级时间对齐；模型按需下载。
 
 ## Agent 工作规则
 
-1. 视频或网页任务开始时，查看项目已有框架、依赖和可运行脚本。
-2. 选最少的一组工具解决需求；新增依赖写入当前项目清单，避免全局安装 JavaScript 库。
-3. 系统工具缺失时，说明具体缺项并优先给可复现的安装方式；高体积模型或会下载大量资产的工具，先确认资源需求。
-4. 导出前检查分辨率、帧率、音频、字幕和目标格式；尽可能交付可复现的源文件与导出命令。
+1. 视频或网页任务开始时，查看项目已有框架、依赖和运行脚本。
+2. 只选完成需求所需的工具；新增 JavaScript 依赖写入当前项目，避免污染其他项目。
+3. 需要模型权重时，先检查机器内存、存储和模型大小；模型不是应用安装的一部分。
+4. 导出前检查分辨率、帧率、音频、字幕和目标格式，并交付可复现源文件与命令。
 5. 涉及 Remotion 商业用途时，先查当前许可条件。
 
 ## 原始项目链接
 
-[Remotion](https://github.com/remotion-dev/remotion) · [Remotion Skills](https://github.com/remotion-dev/skills) · [Anime.js](https://github.com/juliangarnier/anime) · [Motion](https://github.com/motiondivision/motion) · [Manim](https://github.com/ManimCommunity/manim) · [Lottie](https://github.com/airbnb/lottie-web) · [MCP for Blender](https://github.com/ahujasid/mcp-for-blender) · [Three.js](https://github.com/mrdoob/three.js) · [Three GPU Pathtracer](https://github.com/gkjohnson/three-gpu-pathtracer) · [Jolt Physics](https://github.com/jrouwe/JoltPhysics) · [postprocessing](https://github.com/pmndrs/postprocessing) · [Three.quarks](https://github.com/Alchemist0823/three.quarks) · [Tweakpane](https://github.com/cocopon/tweakpane) · [ComfyUI](https://github.com/Comfy-Org/ComfyUI) · [CosyVoice](https://github.com/FunAudioLLM/CosyVoice) · [librosa](https://github.com/librosa/librosa) · [WhisperX](https://github.com/m-bain/whisperX) · [OBS Studio](https://github.com/obsproject/obs-studio) · [LosslessCut](https://github.com/mifi/lossless-cut) · [FFmpeg](https://github.com/FFmpeg/FFmpeg)
+[Remotion](https://github.com/remotion-dev/remotion) · [Remotion Skills](https://github.com/remotion-dev/skills) · [Anime.js](https://github.com/juliangarnier/anime) · [Motion](https://github.com/motiondivision/motion) · [Manim](https://github.com/ManimCommunity/manim) · [Lottie](https://github.com/airbnb/lottie-web) · [MCP for Blender](https://github.com/ahujasid/mcp-for-blender) · [Three.js](https://github.com/mrdoob/three.js) · [Three GPU Pathtracer](https://github.com/gkjohnson/three-gpu-pathtracer) · [Jolt Physics](https://github.com/jrouwe/JoltPhysics) · [postprocessing](https://github.com/pmndrs/postprocessing) · [Three.quarks](https://github.com/Alchemist0823/three.quarks) · [Tweakpane](https://github.com/cocopon/tweakpane) · [ComfyUI](https://github.com/Comfy-Org/ComfyUI) · [CosyVoice](https://github.com/QwenAudio/CosyVoice) · [librosa](https://github.com/librosa/librosa) · [WhisperX](https://github.com/m-bain/whisperX) · [OBS Studio](https://github.com/obsproject/obs-studio) · [LosslessCut](https://github.com/mifi/lossless-cut) · [FFmpeg](https://github.com/FFmpeg/FFmpeg)
