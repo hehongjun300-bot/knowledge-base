@@ -1,7 +1,7 @@
 ---
 title: "Creative Media Toolchain / 视频与网页动效工具链"
 created: 2026-11-06
-updated: 2026-11-06
+updated: 2026-11-07
 tags: [technology, video, web-animation, 3d, audio, agents]
 status: active
 lang: both
@@ -16,6 +16,7 @@ lang: both
 设备为 Apple Silicon Mac，8 GB 统一内存。工具和 Skill 已按用户授权安装到用户目录；大型生成模型不在本次安装范围内。
 
 - **Remotion Agent Skills**：13 个官方 Skill 已安装在 Codex，包括 remotion-best-practices、remotion-create、remotion-render、remotion-captions 等。它们是工作指引，不等于软件或模型。
+- **OpenMontage / HyperFrames 相关 Skills**：从 [calesthio/OpenMontage](https://github.com/calesthio/OpenMontage) 安装了 `hyperframes-core`、`hyperframes-creative`、`hyperframes-animation`、`hyperframes-media`、`media-use`、`video-edit`、`visual-style`、`create-video`，位于 `~/.codex/skills/`。这些本机 Skill 不会随知识库 GitHub 同步；本页只记录用途和来源。`create-video` 依赖 HeyGen Video Agent/API，使用前需确认 `HEYGEN_API_KEY` 和账号能力。
 - **JavaScript 工具链**：共享目录 ~/.codex/creative-media-toolchain 已安装 Remotion 4.0.541、Anime.js 4.5.0、Motion 14.9.1、Lottie Web 5.13.0、Three.js 0.187.0、Three GPU Pathtracer 0.0.28、Jolt Physics JS 1.1.1、postprocessing 6.39.6、Three.quarks 0.17.1、Tweakpane 4.0.5、FFmpeg static 5.3.0 和 Remotion headless Chromium。实际项目仍应把所需库写入自己的依赖清单。
 - **Manim / librosa / FFmpeg**：Manim Community 0.22.1、librosa 0.11.0、FFmpeg/ffprobe 已安装在共享 Python 环境，命令可从 ~/.local/bin 调用。
 - **WhisperX**：3.8.6 已安装，命令可调用。模型按首次任务需要下载；本机建议 CPU、int8 和较小模型。
@@ -26,6 +27,12 @@ lang: both
 - **ComfyUI**：Comfy Desktop 1.1.8 已安装；本地 Apple Silicon/MPS ComfyUI 0.44.0 服务运行于 http://127.0.0.1:8188。尚未安装生成模型。视频工作流的入门模型约 41–53 GB，不适合本机空间和内存预算。
 
 本机 Codex Skill creative-media-toolchain 提供按任务选工具的路由说明，版本与路径见 ~/.codex/skills/creative-media-toolchain/references/local-setup.md。
+
+## 开源视频制作路线参考
+
+- **OpenMontage**：开源 Agent 视频制作系统，包含 documentary-montage 流程，可检索开放影像/素材并剪成真实动态镜头时间线，也覆盖旁白、音乐、字幕、合成和成片检查。适合实拍 B-roll、情绪蒙太奇和视频 essay 的工作流参考。仓库采用 AGPL-3.0；本机只安装了上面的 Skills，没有克隆或部署整套应用。使用具体素材时仍应逐条核对素材页许可。[GitHub 仓库](https://github.com/calesthio/OpenMontage)
+- **HyperFrames**：独立的 HTML/CSS/GSAP 视频合成项目，适合动态字幕、标题、图文动效和可控转场；它负责合成动效，不会自动提供真实摄影镜头。[官方仓库](https://github.com/heygen-com/hyperframes)，Apache-2.0。
+- **本机使用边界**：HyperFrames/OpenMontage Skills 只是工作指导，不会自动安装媒体库、API 凭证、音色或模型。`hyperframes-media`、`media-use` 和 `create-video` 涉及 HeyGen 等外部 provider；没有对应凭证时应选可用的本地/免费路径，并明确 TTS 仍可能是合成音。
 
 ## 按任务选择
 
