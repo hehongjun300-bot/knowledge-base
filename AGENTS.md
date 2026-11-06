@@ -34,6 +34,7 @@ knowledge-base/
 │
 ├── domains/               ← Knowledge by topic / 按主题分类的知识
 │   ├── tech/              ← Technology / 技术
+│   │   └── creative-media-agent-capabilities.md ← Agent 创意媒体能力索引
 │   ├── business/          ← Business & startups / 商业
 │   ├── reading/           ← Book notes / 阅读笔记
 │   └── life/              ← Life philosophy / 生活哲学
@@ -54,6 +55,7 @@ knowledge-base/
 2. `profile/goals.md` — to understand current direction / 了解当前方向
 3. `journal/` — latest entries for recent thinking / 最新日志了解近期思考
 4. Relevant `domains/` folder based on the task / 根据任务查看相关领域
+5. For video, animation, 3D, audio, subtitles, or export tasks, read `domains/tech/creative-media-agent-capabilities.md` / 视频、动效、3D、音频、字幕或导出任务先读该能力索引
 
 ---
 

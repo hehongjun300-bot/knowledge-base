@@ -8,6 +8,7 @@ My personal knowledge repository — a structured, AI-friendly system for captur
 
 - 🤖 **AI Agents**: Start with [`AGENTS.md`](./AGENTS.md)
 - 👤 **Humans**: You're in the right place. Browse the folders below.
+- 🎬 **Creative media tasks**: See the [Agent capability index](./domains/tech/creative-media-agent-capabilities.md) for video, animation, 3D, audio, subtitles, and export workflows.
 
 ## Structure
 
