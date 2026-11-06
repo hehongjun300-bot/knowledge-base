@@ -46,5 +46,5 @@ lang: both
 
 ## 当前个人 Mac 的部署提示
 
-Apple Silicon，8 GB 统一内存。Remotion、网页动效与 3D 库、Manim、librosa、FFmpeg、WhisperX、CosyVoice 运行环境、Blender/OBS/LosslessCut 和 ComfyUI 已安装。ComfyUI 服务已启动，但没有生成模型；CosyVoice 推理环境已装好，但没有语音模型。Blender MCP 已配置；新 Codex 会话通常需要读取该 MCP 配置。完整路径和版本见 [本机工具链记录](../../../.codex/skills/creative-media-toolchain/references/local-setup.md)（该链接只在这台 Mac 上成立）。
+Apple Silicon，8 GB 统一内存。Remotion、网页动效与 3D 库、Manim、librosa、FFmpeg、WhisperX、CosyVoice 运行环境、Blender/OBS/LosslessCut 和 ComfyUI 已安装。ComfyUI 服务已启动，但没有生成模型；CosyVoice 推理环境已装好，但没有语音模型。Blender MCP 已配置；新 Codex 会话通常需要读取该 MCP 配置。详细版本和部署说明见知识库中的[本机工具链记录](./creative-media-toolchain.md)。Codex 私有技能目录（~/.codex/skills）只存在于个人 Mac，不属于这个 Git 仓库。
 
