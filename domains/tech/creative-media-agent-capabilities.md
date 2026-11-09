@@ -1,7 +1,7 @@
 ---
 title: "Creative Media Agent Capabilities / 创意媒体 Agent 能力索引"
 created: 2026-11-06
-updated: 2026-11-07
+updated: 2026-11-10
 tags: [technology, agents, video, animation, 3d, audio]
 status: active
 lang: both
@@ -19,6 +19,7 @@ lang: both
 | 真实动态素材蒙太奇 | OpenMontage documentary-montage 工作流、video-edit、FFmpeg | 挑选真实影像、剪辑 B-roll、配旁白和音乐、做字幕与复核 | OpenMontage 全仓库为 AGPL-3.0；本机只安装了 Skills，未部署整套程序；素材许可逐条检查 |
 | 动态字幕、标题和转场 | HyperFrames + hyperframes-core / hyperframes-creative / hyperframes-animation | 用 HTML/CSS/GSAP 制作可控的文字与图形动效、转场和时间线 | HyperFrames 是合成/动效工具，不负责提供实拍镜头或逼真人物素材 |
 | 供应商视频 Agent 生成 | create-video | 用文本调用 HeyGen Video Agent 生成整条视频草稿 | 需要 `HEYGEN_API_KEY` 和可用的 HeyGen API；未配置时不可直接使用 |
+| 代码生成的风格化短片 | lemo-opuscar（**DSH 适配版**） | 66 种风格选型、写 treatment、按节拍生成画面/纸片声效、渲染与交付 | 技能只存文本；上游库需单独克隆到 `~/lemo-opuscar`；DSH 版 ≠ Codex 技能 ≠ Claude Code 插件；渲染参数见技能页说明 |
 | 选择场景动效、比较转场 | awesome-ai-motion | 查效果卡、参数和提示词，应用配方时间线，改 HTML 示例渲染 | 按场景意图选效果，避免堆叠无关动效 |
 | 网页 UI 与布局动画 | Motion | 界面进入/退出、布局变化和交互动画 | 根据项目框架安装依赖 |
 | DOM/SVG 时间线动画 | Anime.js | 编排网页元素、SVG 和时间线动作 | 适合网页内动画 |
@@ -46,6 +47,16 @@ lang: both
 3. 检查当前 Agent 能否访问目标应用/MCP。不要假设另一台机器或另一 Agent 有相同安装。
 4. 需要生成模型时先检查模型大小、磁盘、内存和设备支持，再开始下载。
 5. 交付源文件和可复现的预览/导出方式；核对视频尺寸、帧率、音频和字幕。
+
+## lemo-opuscar（DSH 版）
+
+用代码直接拍短片，而不是剪辑或生成素材：66 种风格（油画厚涂、水彩、浮世绘、纸片立体书、卫星简报、产品拆解…），每种带 `STYLE.md` 不变量与一支全代码样片。
+
+- 技能（DSH 适配）：[references/skills/lemo-opuscar-dsh](../../references/skills/lemo-opuscar-dsh/README.md)
+- 安装位置：`~/.dsh/skills/lemo-opuscar/`；调用：`/lemo-opuscar` 或直接说"做一支…的视频"
+- 上游库：<https://github.com/lemomo-ai/lemo-opuscar>，本机克隆在 `~/lemo-opuscar`
+- **别和同名的 Codex 技能 / Claude Code 插件混装**，那是另外两个平台的东西
+- 实战注意：无头 Chromium 若走 SwiftShader，渲染慢 27 倍（见[踩坑记录](../../references/skills/lemo-opuscar-dsh/PRODUCTION-NOTES.md)）
 
 ## 当前个人 Mac 的部署提示
 

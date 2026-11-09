@@ -46,6 +46,8 @@ knowledge-base/
 │   └── YYYY/MM/DD.md
 │
 ├── references/            ← Bookmarks, quotes, tools / 参考资料
+│   └── skills/            ← Installed agent skills (DSH-adapted) / 已装技能（DSH 适配）
+│       └── lemo-opuscar-dsh/  ← ⚠️ DSH 版，非 Codex 技能、非 Claude Code 插件
 │
 └── templates/             ← File templates / 文件模板
 ```
@@ -56,6 +58,7 @@ knowledge-base/
 3. `journal/` — latest entries for recent thinking / 最新日志了解近期思考
 4. Relevant `domains/` folder based on the task / 根据任务查看相关领域
 5. For video, animation, 3D, audio, subtitles, or export tasks, read `domains/tech/creative-media-agent-capabilities.md` / 视频、动效、3D、音频、字幕或导出任务先读该能力索引
+6. Before using a saved skill, read its note under `references/skills/` — platform matters: the **DSH** builds are not interchangeable with Codex skills or Claude Code plugins / 用已存技能前先看 `references/skills/` 下的说明——平台不同，**DSH 版与 Codex 技能、Claude Code 插件不可互换**
 
 ---
 
